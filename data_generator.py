@@ -6,15 +6,8 @@ import argparse
 import math
 import collections
 
+
 BID_COUNT = 1
-BUDGET_MIN = 50
-BUDGET_MAX = 1000000000
-IMP_MIN = 0
-IMP_MAX = 5100000
-CLK_MIN = 0
-CLK_MAX = 130000
-COST_MIN = 0
-COST_MAX = 22000000
 
 
 # read auction csv file
