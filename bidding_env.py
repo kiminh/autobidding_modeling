@@ -2,7 +2,7 @@ import os
 import random
 import math
 import collections
-import sa_auction
+import auction
 import numpy as np
 
 class BiddingStaticEnv:
@@ -87,7 +87,7 @@ class BiddingStaticEnv:
         t = next_state.time
         if t == self.last_time:
             done = True
-        #bidprice = sa_auction.get_bidprice(action_idx, ctr)
+        #bidprice = auction.get_bidprice(action_idx, ctr)
         if bidprice and bidprice < winning_price:
             reward = 0.0
 

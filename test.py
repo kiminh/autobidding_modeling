@@ -2,7 +2,7 @@ from bidding_env import BiddingStaticEnv
 #from dqn import DeepQNetwork
 from dqn_keras import DQNAgent
 import argparse
-import sa_auction
+import auction
 
 # run episodes
 def test(env, agent, args):
@@ -18,7 +18,7 @@ def test(env, agent, args):
             ba = state[2]
             state = state.reshape(1, env.state_size)
             action_idx = agent.act(state)
-            bidprice = sa_auction.get_bidprice(action_idx, ba)
+            bidprice = auction.get_bidprice(action_idx, ba)
             next_state, reward, done = env.step(bidprice)
             print("{} | {}".format(env.current_adgrp_name, bidprice))
 
@@ -51,7 +51,7 @@ def main():
 
     args = parser.parse_args()
 
-    n_action = sa_auction.action_size()
+    n_action = auction.action_size()
 
     env = BiddingStaticEnv(args.data_path, args.state_size)
 

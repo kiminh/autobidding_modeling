@@ -2,7 +2,7 @@ from bidding_env import BiddingStaticEnv
 #from dqn import DeepQNetwork
 from dqn_keras import DQNAgent
 import argparse
-import sa_auction
+import auction
 
 AVG_ADGRP_CTR = 0.004
 AVG_BIDPRICE =  1400
@@ -26,7 +26,7 @@ def predict(env, agent, args):
                 prev_cost = state.cost
                 reshaped_state = state.to_array().reshape(1, env.state_size)
                 action_idx = agent.act(reshaped_state, args.strategy)
-                bidprice = sa_auction.get_bidprice(action_idx, prev_cost)
+                bidprice = auction.get_bidprice(action_idx, prev_cost)
 
             next_state, reward, done = env.step(bidprice)
             results.append("{}\t{}".format(env.current_adgrp_name, int(bidprice)))
@@ -70,7 +70,7 @@ def main():
 
     args = parser.parse_args()
 
-    n_action = sa_auction.action_size()
+    n_action = auction.action_size()
 
     # build env
     env = BiddingStaticEnv(args.data_path, args.adgrp_dict_file, args.state_size)

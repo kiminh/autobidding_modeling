@@ -4,7 +4,6 @@ import datetime
 import numpy as np
 from collections import deque
 import tensorflow as tf
-import sa_auction
 
 
 class DQNAgent:
